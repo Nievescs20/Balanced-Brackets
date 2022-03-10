@@ -19,7 +19,7 @@ const hasBalancedBrackets = (string) => {
     }
     // if current bracket is a closing bracket
     else {
-      // bracket to watch becomes the last element in the openBrackets array
+      // bracketToWatch becomes the last element in the openBrackets array
       let bracketToMatch = openBrackets[openBrackets.length - 1];
 
       // Use dictionary to check if the corresponding bracket of bracketToMatch is currentBracket:
