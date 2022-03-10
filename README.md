@@ -105,6 +105,45 @@ Here is another similar solution:
 
 ```
 
+My own solution:
+
+```js
+function hasBalancedBrackets(inputStr) {
+	var inputBrackets = inputStr.match(/[[\](){}]/g);
+	
+	// if no brackets at all, it's balanced!
+	if (!inputStr.length || !inputBrackets.length) return true;
+	
+	var bracketPairs = {  
+		'[' : ']',
+		'(' : ')',
+		'{' : '}'
+	}; 
+	
+	var openBrackets = [];
+	
+	for (var i = 0; i < inputBrackets.length; i++) {
+	  var currBracket = inputBrackets[i];
+
+	  // if is open bracket
+	  if ( bracketPairs[currBracket] ) openBrackets.push(currBracket);
+	  
+	  // if is closing bracket
+	  else {
+	    var bracketToMatch = openBrackets[openBrackets.length - 1];
+	    
+	    // right closing brace, yay!
+	    if (bracketPairs[bracketToMatch] === currBracket) openBrackets.pop();
+	    // wrong closing brace, boo!
+	    else return false;
+	  }
+	}
+	
+	return !openBrackets.length;
+}
+
+```
+
 ## Resources
 _Feel free to PR any useful resources! :)_
 
