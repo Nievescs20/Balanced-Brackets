@@ -135,7 +135,9 @@ const hasBalancedBrackets = (string) => {
       // Use dictionary to check if the corresponding bracket of bracketToMatch is currentBracket:
 
       // if so: POP
-      if (bracketPairs[bracketToMatch] === currentBracket) openBrackets.pop();
+      if (bracketPairs[bracketToMatch] === currentBracket) {
+        openBrackets.pop();
+      }
       // if not: return false
       else return false;
     }
