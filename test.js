@@ -2,6 +2,7 @@ const hasBalancedBrackets = (string) => {
   // if the string has no length then there are no brackets to balance: return true
   if (string.length <= 0) return true;
 
+  const brackets = "(){}[]";
   const bracketPairs = {
     "[": "]",
     "(": ")",
@@ -11,6 +12,10 @@ const hasBalancedBrackets = (string) => {
   let openBrackets = [];
 
   for (let i = 0; i < string.length; i++) {
+    // check if the current element in the string is a bracket
+    if (!brackets.includes(string[i])) {
+      continue;
+    }
     let currentBracket = string[i];
 
     // Check if currentBracket is a key(open bracket) in the dictionary
@@ -43,3 +48,5 @@ console.log(hasBalancedBrackets("({}{(())})")); //true
 console.log(hasBalancedBrackets("([)])})")); //false
 console.log(hasBalancedBrackets("")); //true
 console.log(hasBalancedBrackets("[[[")); //false
+console.log(hasBalancedBrackets("thestring[[[]]]")); //true
+console.log(hasBalancedBrackets("thestring[[[")); //false
